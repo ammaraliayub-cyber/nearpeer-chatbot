@@ -37,7 +37,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    console.log('API function called:', req.method, req.url);
+    console.log('Processing POST request');
     
     // Get API key from environment variable
     const apiKey = process.env.OPENAI_API_KEY;

@@ -1245,7 +1245,7 @@
         class ChatBot {
             constructor() {
                 // Use our backend API endpoint
-                this.apiEndpoint = '/api/chat';
+                this.apiEndpoint = '/api/chat.mjs';
                 
                 this.messages = [];
                 this.isLoading = false;
@@ -1296,8 +1296,7 @@
                 this.headerReasoningEffortButtons = document.querySelectorAll('#headerReasoningEffortGroup .reasoning-effort-btn');
                 this.headerTemperatureRange = document.getElementById('headerTemperatureRange');
                 this.headerTemperatureValue = document.getElementById('headerTemperatureValue');
-                this.headerCurrentSettings = document.getElementById('headerCurrentSettings');
-                this.headerResetDefaultsBtn = document.getElementById('headerResetDefaultsBtn');
+                // Removed references to non-existent elements
                 
                 // Settings elements
                 this.settingsPanel = document.getElementById('settingsPanel');
@@ -1441,9 +1440,7 @@
                     });
                 });
 
-                this.headerResetDefaultsBtn.addEventListener('click', () => {
-                    this.resetToDefaults();
-                });
+                // Removed event listener for non-existent element
 
 
                 // Settings events
@@ -2378,7 +2375,6 @@
                 }
 
                 this.currentSettings.innerHTML = settingsText;
-                this.headerCurrentSettings.innerHTML = settingsText;
             }
 
             saveSettings() {
