@@ -2,11 +2,15 @@
   "version": 2,
   "builds": [
     {
-      "src": "*.png",
+      "src": "logo.png",
       "use": "@vercel/static"
     },
     {
-      "src": "*.ico",
+      "src": "Botpic.png",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "favicon.png",
       "use": "@vercel/static"
     },
     {
@@ -20,7 +24,7 @@
       "dest": "/api/$1"
     },
     {
-      "src": "/(.*\\.(png|ico|jpg|jpeg|gif|svg|css|js|html))",
+      "src": "/(logo\\.png|Botpic\\.png|favicon\\.png)",
       "dest": "/$1"
     },
     {
