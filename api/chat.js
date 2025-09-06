@@ -1,18 +1,39 @@
 // Vercel serverless function to handle OpenAI API calls
 module.exports = async function handler(req, res) {
+  console.log('=== API Function Called ===');
+  console.log('Method:', req.method);
+  console.log('URL:', req.url);
+  console.log('Headers:', req.headers);
+  
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS, GET');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   // Handle preflight requests
   if (req.method === 'OPTIONS') {
+    console.log('Handling OPTIONS preflight request');
     return res.status(200).end();
   }
 
-  // Only allow POST requests
+  // Handle GET requests for testing
+  if (req.method === 'GET') {
+    console.log('Handling GET request - API is working');
+    return res.status(200).json({ 
+      message: 'API is working!', 
+      method: req.method,
+      timestamp: new Date().toISOString()
+    });
+  }
+
+  // Only allow POST requests for actual chat
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    console.log('Method not allowed:', req.method);
+    return res.status(405).json({ 
+      error: 'Method not allowed', 
+      received: req.method,
+      allowed: ['POST', 'OPTIONS', 'GET']
+    });
   }
 
   try {
