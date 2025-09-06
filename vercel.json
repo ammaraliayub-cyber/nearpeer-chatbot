@@ -1,9 +1,27 @@
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "*.png",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.ico",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ],
   "routes": [
     {
       "src": "/api/(.*)",
       "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*\\.(png|ico|jpg|jpeg|gif|svg|css|js|html))",
+      "dest": "/$1"
     },
     {
       "src": "/(.*)",
