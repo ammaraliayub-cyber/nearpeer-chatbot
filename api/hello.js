@@ -19,8 +19,16 @@ export default function handler(req, res) {
   }
 
   if (req.method === 'POST') {
+    // Return the format expected by the frontend
     return res.status(200).json({ 
-      message: 'Hello API received POST!', 
+      success: true,
+      data: {
+        choices: [{
+          message: {
+            content: "Hello! This is a test response from the API. The API is working correctly!"
+          }
+        }]
+      },
       method: req.method,
       body: req.body,
       timestamp: new Date().toISOString()
