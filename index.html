@@ -316,34 +316,7 @@
             flex-direction: row-reverse;
         }
 
-        .message-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: white;
-            flex-shrink: 0;
-            font-size: 0.9rem;
-            overflow: hidden;
-        }
-
-        .message.user .message-avatar {
-            background: #10a37f;
-        }
-
-        .message.assistant .message-avatar {
-            background: transparent;
-        }
-
-        .message-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 4px;
-        }
+        /* Avatar styles removed - clean interface without avatars */
 
         .message-content {
             background: #2d2d2d;
@@ -1512,18 +1485,7 @@
                 const messageDiv = document.createElement('div');
                 messageDiv.className = `message ${message.role}`;
                 
-                const avatar = document.createElement('div');
-                avatar.className = 'message-avatar';
-                
-                if (message.role === 'user') {
-                    avatar.textContent = '👤';
-                } else {
-                    // Use botpic.png for assistant messages
-                    const avatarImg = document.createElement('img');
-                    avatarImg.src = 'botpic.png';
-                    avatarImg.alt = 'AI Assistant';
-                    avatar.appendChild(avatarImg);
-                }
+                // No avatar needed - clean interface
 
                 const content = document.createElement('div');
                 content.className = 'message-content';
@@ -1546,7 +1508,6 @@
                     content.appendChild(textContent);
                 }
 
-                messageDiv.appendChild(avatar);
                 messageDiv.appendChild(content);
 
                 // Add copy button for assistant messages
@@ -2054,14 +2015,7 @@
                 typingDiv.className = 'message assistant typing-indicator';
                 typingDiv.id = 'typingIndicator';
                 
-                const avatar = document.createElement('div');
-                avatar.className = 'message-avatar';
-                
-                // Use botpic.png for typing indicator
-                const avatarImg = document.createElement('img');
-                avatarImg.src = 'botpic.png';
-                avatarImg.alt = 'AI Assistant';
-                avatar.appendChild(avatarImg);
+                // No avatar needed - clean interface
 
                 const content = document.createElement('div');
                 content.className = 'message-content';
@@ -2086,7 +2040,6 @@
                     ${cancelButton}
                 `;
 
-                typingDiv.appendChild(avatar);
                 typingDiv.appendChild(content);
                 this.chatMessages.appendChild(typingDiv);
                 this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
