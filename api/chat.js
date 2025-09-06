@@ -1,5 +1,5 @@
 // Vercel serverless function to handle OpenAI API calls
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -16,6 +16,8 @@ export default async function handler(req, res) {
   }
 
   try {
+    console.log('API function called:', req.method, req.url);
+    
     // Get API key from environment variable
     const apiKey = process.env.OPENAI_API_KEY;
     
@@ -25,6 +27,8 @@ export default async function handler(req, res) {
         error: 'API key not configured. Please contact the administrator.' 
       });
     }
+    
+    console.log('API key found:', apiKey.substring(0, 10) + '...');
 
     // Get request body
     const { messages, model, maxTokens, temperature, reasoningEffort } = req.body;
